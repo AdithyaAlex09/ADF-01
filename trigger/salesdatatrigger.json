@@ -1,0 +1,25 @@
+{
+	"name": "salesdatatrigger",
+	"properties": {
+		"description": "copying sales data ",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_executions",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 3,
+				"startTime": "2024-05-29T05:35:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"name": "DSblobtosql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_blob01",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourcefiles": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().sourcefiles",
+					"type": "Expression"
+				},
+				"container": "alexcontainer1"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

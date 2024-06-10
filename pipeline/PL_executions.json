@@ -1,0 +1,49 @@
+{
+	"name": "PL_executions",
+	"properties": {
+		"activities": [
+			{
+				"name": "PL_blob_to_sql",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Pl_copydata_blob_to_sql",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "PL_sql_to_adls",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "PL_blob_to_sql",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_copydata_sql_to_Adls",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-06-05T05:26:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
